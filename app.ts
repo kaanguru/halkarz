@@ -2,6 +2,11 @@ import * as playwright from "playwright";
 import fs from "fs/promises";
 
 const filePath = "data.json";
+interface SirketBilgisi {
+  kod: string;
+  sirketAdı: string;
+  durum: string;
+}
 
 async function yeniArzListesi(): Promise<string> {
   const browser = await playwright.chromium.launch({
@@ -38,7 +43,7 @@ async function yeniArzListesi(): Promise<string> {
       return false;
     }
   });
-  const data = yeniVeBistKodluArzListesi.map((row) => ({
+  const data: SirketBilgisi[] = yeniVeBistKodluArzListesi.map((row) => ({
     kod: row[0],
     sirketAdı: row[1],
     durum: row[2],
@@ -60,5 +65,4 @@ async function main() {
   await saveDataToFile(data);
 }
 
-// Call the main function to start the process
 main().catch((error) => console.error(error));

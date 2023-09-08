@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsc-watch --onSuccess \"node app.js\"",
@@ -12,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.5.9",
     "tsc-watch": "^6.0.4",
     "typescript": "^5.2.2"
   },
